@@ -51,16 +51,3 @@ cd frontend
 npm install
 npm run dev
 ```
-
-The frontend proxies `/api` requests to the backend at `http://localhost:3000` by default.
-
-## Git Remote
-
-This project is pushed to the new repository:
-
-`https://github.com/Rishika92/MERN-PROJECT.git`
-
-## Notes
-
-- If you add a `.env` file for MongoDB or other backend settings, place it in `backend/`.
-- Confirm the backend server is running before using the frontend application.
