@@ -5,7 +5,8 @@ const productCollection = () => {
     return getDB().collection("products");
 };
 const createProduct = async (productData) => {
-    return await productCollection().insertOne(productData);
+    const result = await productCollection().insertOne(productData);
+    return { _id: result.insertedId, ...productData };
 };
 const getAllProducts = async () => {
     return await productCollection().find().toArray();
@@ -16,10 +17,11 @@ const getProductById = async (id) => {
     });
 };
 const updateProduct = async (id, data) => {
-    return await productCollection().updateOne(
+    await productCollection().updateOne(
         { _id: new ObjectId(id) },
         { $set: data }
     );
+    return await getProductById(id);
 };
 const deleteProduct = async (id) => {
     return await productCollection().deleteOne({

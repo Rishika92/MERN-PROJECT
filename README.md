@@ -29,7 +29,20 @@ A simple backend application built using **Node.js**, **Express.js**, and **Mong
 
 ## Run Locally
 
+### Backend
+
 ```bash
+cd backend
 npm install
-node server.js
+npm start
 ```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend is configured to proxy API calls from `/api` to the backend running on `http://localhost:3000`.

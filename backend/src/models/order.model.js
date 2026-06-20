@@ -6,7 +6,8 @@ const orderCollection = () => {
 };
 
 const createOrder = async (orderData) => {
-    return await orderCollection().insertOne(orderData);
+    const result = await orderCollection().insertOne(orderData);
+    return { _id: result.insertedId, ...orderData };
 };
 
 const getAllOrders = async () => {
@@ -20,10 +21,11 @@ const getOrderById = async (id) => {
 };
 
 const updateOrder = async (id, data) => {
-    return await orderCollection().updateOne(
+    await orderCollection().updateOne(
         { _id: new ObjectId(id) },
         { $set: data }
     );
+    return await getOrderById(id);
 };
 
 const deleteOrder = async (id) => {
